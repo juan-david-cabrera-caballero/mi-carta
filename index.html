@@ -1,0 +1,375 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Una carta para ti 💗</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Playfair+Display:wght@600&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-image: 
+        linear-gradient(rgba(0,0,20,0.15), rgba(0,0,20,0.15)),
+        url("fondo-galaxia.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    font-family: 'Quicksand', sans-serif;
+    overflow-x: hidden;
+    padding: 20px;
+}
+
+
+.contenedor {
+    text-align: center;
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+}
+
+.titulo {
+    color: white;
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+
+.hello-kitty {
+    width: min(75vw, 350px);
+    cursor: pointer;
+    border-radius: 15px;
+    filter: drop-shadow(0 10px 20px #0005);
+    animation: flotar 3s infinite ease-in-out;
+    transition: .4s;
+}
+
+.hello-kitty:hover {
+    transform: scale(1.05);
+}
+
+@keyframes flotar {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+/* CARTA */
+
+.carta {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+
+    width: 90%;
+    max-width: 520px;
+    max-height: 85vh;
+    overflow-y: auto;
+
+    padding: 40px;
+
+    /* Papel antiguo */
+    background:
+        radial-gradient(ellipse at 10% 10%, #b99564aa, transparent 35%),
+        radial-gradient(ellipse at 90% 90%, #b99564aa, transparent 40%),
+        linear-gradient(135deg, #f5e3bd, #e8d0a2, #f7e8c8);
+
+    color: #59402c;
+
+    border: 3px solid #a98253;
+    border-radius: 5px;
+
+    box-shadow:
+        0 15px 50px #0009,
+        inset 0 0 35px #98734b66,
+        inset 0 0 8px #6f4b2d;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translate(-50%, -40%) scale(.5);
+    transform-origin: top center;
+
+    z-index: 10;
+    transition: .6s ease;
+}
+
+/* Borde decorativo */
+.carta::before {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border: 2px solid #a98253;
+    outline: 1px solid #c2a477;
+    outline-offset: 4px;
+    pointer-events: none;
+}
+
+/* Carta desplegada */
+.carta.abierta {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+    animation: desplegar .8s ease;
+}
+
+/* Borde decorativo */
+.carta::before {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border: 2px solid #a98253;
+    outline: 1px solid #c2a477;
+    outline-offset: 4px;
+    pointer-events: none;
+}
+
+/* Carta desplegada */
+.carta.abierta {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+    animation: desplegar .8s ease;
+}
+
+.carta::before {
+    content: none;
+}
+
+.carta.abierta {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+    animation: desplegar .8s ease;
+}
+
+@keyframes desplegar {
+    0% {
+        transform: translate(-50%, -50%) scaleY(.1);
+    }
+    100% {
+        transform: translate(-50%, -50%) scaleY(1);
+    }
+}
+
+
+.carta h1 {
+    font-family: 'Playfair Display', serif;
+    color: #79502e;
+    font-size: 29px;
+    margin-bottom: 25px;
+    text-align: center;
+    text-shadow: 1px 1px 1px #c9ad80;
+}
+
+
+
+.carta p {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    line-height: 2;
+    color: #503b2b;
+    text-align: left;
+    position: relative;
+}
+
+
+.firma {
+    text-align: right !important;
+    color: #bd568d;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+button {
+    background: #f2b5d0;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    color: #713b59;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: .3s;
+}
+
+button:hover {
+    background: #e995bc;
+    transform: scale(1.05);
+}
+
+.decoracion {
+    position: absolute;
+    color: #ffe5aa;
+    font-size: 30px;
+    animation: brillar 2s infinite alternate;
+}
+
+.estrella1 {
+    top: 15%;
+    left: 5%;
+}
+
+.estrella2 {
+    top: 30%;
+    right: 5%;
+}
+
+.estrella3 {
+    bottom: 10%;
+    left: 10%;
+}
+
+@keyframes brillar {
+    from {
+        opacity: .3;
+        transform: scale(.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+}
+
+@media(max-width: 500px) {
+    .carta {
+        padding: 27px;
+    }
+
+    .carta h1 {
+        font-size: 24px;
+    }
+
+    .carta p {
+        font-size: 14px;
+    }
+}
+
+.carta {
+    padding: 35px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="contenedor" id="contenedor">
+
+    <p class="titulo">
+        Hay algo que quiero decirte... 💗<br>
+        Toca la Hello Kitty para descubrirlo.
+    </p>
+
+    <span class="decoracion estrella1">✦</span>
+    <span class="decoracion estrella2">✧</span>
+    <span class="decoracion estrella3">✦</span>
+
+    <img
+        src="hello-kitty.jpg"
+        class="hello-kitty"
+        id="kitty"
+        alt="Hello Kitty sosteniendo una carta"
+        onclick="abrirCarta()"
+    >
+
+</div>
+
+<!-- CARTA DE PAPEL -->
+
+<div class="carta" id="carta">
+
+    <h1>No sé si eres arte o una distracción</h1>
+
+    <p>
+        Hay cosas que uno simplemente no puede evitar admirar,
+        y contigo me pasa bastante. No sé si te lo han dicho antes, 
+        pero tienes unos ojos en los que fácilmente podría perderme, 
+        de esos que dan ganas de quedarse mirando un ratito más.
+    </p>
+
+    <p>
+        Tus labios tienen algo curioso, 
+        no sé si es tu sonrisa o la forma en que hablas, 
+        pero hay algo en ellos que hace que hace que sea imposible que pasen desapersividos. 
+        Y tu pelo... no sé cómo explicarlo, pero tiene ese no sé qué 
+        que hace que hasta los días más normales se vean un poquito más bonitos 
+        Y qué decir de tu piel color canela, que tiene ese tono tan bonito y cálido
+        que parece guardar un poquito de los atardeceres.
+    </p>
+
+    <p>
+        Hay personas que tienen algo diferente, algo difícil de explicar, pero fácil de admirar.
+        Y tu parece que tienes ese pequeño don.
+    </p>
+
+    <button onclick="irALaGalaxia()">
+    lo que siento cuando miro tus ojos✨
+</button>
+
+</div>
+
+<script>
+
+function abrirCarta() {
+
+    document.getElementById("carta")
+        .classList.add("abierta");
+
+    document.getElementById("kitty")
+        .style.opacity = "0.15";
+
+    document.querySelector(".titulo")
+        .style.opacity = "0";
+}
+
+function cerrarCarta() {
+
+    document.getElementById("carta")
+        .classList.remove("abierta");
+
+    document.getElementById("kitty")
+        .style.opacity = "1";
+
+    document.querySelector(".titulo")
+        .style.opacity = "1";
+}
+
+function irALaGalaxia() {
+
+    document.getElementById("carta")
+        .classList.remove("abierta");
+
+    document.body.style.transition = "opacity 1s ease";
+    document.body.style.opacity = "0";
+
+    setTimeout(() => {
+        window.location.href = "galaxia_3D.html";
+    }, 1000);
+
+}
+
+</script>
+
+</body>
+</html>
